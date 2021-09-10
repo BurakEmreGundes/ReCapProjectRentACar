@@ -11,6 +11,7 @@ namespace Business.Concrete
     {
 
         ICarDal _carDal;
+ 
 
         public CarManager(ICarDal carDal)
         {
@@ -32,9 +33,14 @@ namespace Business.Concrete
            return _carDal.GetAll();
         }
 
-        public void GetById(int id)
+        public List<Car> GetCarsByBrandId(int id)
         {
-            throw new NotImplementedException();
+            return _carDal.GetAll(c=>c.BrandId==id);
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            return _carDal.GetAll(c=>c.ColorId==id);
         }
 
         public void Update(Car car)
